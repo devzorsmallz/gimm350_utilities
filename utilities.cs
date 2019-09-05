@@ -1,26 +1,46 @@
-public class Example
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class Utilities
 {
-    public static void Main()
+    public static string inputType;
+
+    public static bool ContainsLetters(string s)
     {
-        string phrase = "Please don't take my bacon.";
-        /* Split the phrase into objects using ' ' to separate them, and put those objects into an array */
-        string[] words = phrase.Split(' ');
-
-        foreach (var word in words)
+        foreach (char c in s)
         {
-            System.Console.WriteLine($"<{word}>");
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
         }
 
-        string[] values = {"gloob","90"};
-        double number;
-        /* Attempt to parse each value in the array; if it cannot be parsed, write an error message in the console. */
-        foreach (string value in values) {
-            try {
-                number = double.Parse(value);
-            }
-            catch (FormatException) {
-                Console.WriteLine("Unable to parse.");
-            }
+        return false;
+    }
+
+    public static string ProcessText(string input)
+    {
+        // Your code here
+        // Determine whether user has input a word or number
+        // Return the string 'word' if word (anything with letters)
+        // Return 'number' if number (includes decimals)
+
+        if (double.TryParse(input, out double result))
+        {
+            inputType = "number";
         }
+
+        else if (ContainsLetters(input) == true)
+        {
+            inputType = "word";
+        }
+
+        else
+        {
+            inputType = "neither";
+        }
+
+        return inputType;
     }
 }
