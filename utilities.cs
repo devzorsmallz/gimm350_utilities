@@ -21,12 +21,14 @@ public static class Utilities
 
     public static string ProcessText(string input)
     {
+        /* --- 09.05.2019 --- */
+
         // Your code here
         // Determine whether user has input a word or number
         // Return the string 'word' if word (anything with letters)
         // Return 'number' if number (includes decimals)
 
-        if (double.TryParse(input, out double result))
+        /* if (double.TryParse(input, out double result))
         {
             inputType = "number";
         }
@@ -41,6 +43,33 @@ public static class Utilities
             inputType = "neither";
         }
 
-        return inputType;
+        return inputType.ToString(); */
+
+        /* --- 09.12.2019 --- */
+
+        // Return the average number of letters
+
+        double numLetters = 0;
+        double numWords = 1;
+        double avgLetters = 0;
+
+        foreach (char word in input)
+        {
+            if (char.IsSeparator(word))
+            {
+                numWords++;
+            }
+        }
+
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c) && !char.IsSeparator(c))
+            {
+                numLetters++;
+            }
+        }
+
+        avgLetters = numLetters / numWords;
+        return avgLetters.ToString();
     }
 }
