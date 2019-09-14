@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    --- Delegate Design Pattern ---
+    The delegate design pattern is used to break up classes into reusable parts.
+    This is much more efficient than typing out the same code multiple times.
+*/
+
 public static class Utilities
 {
     public static string inputType;
